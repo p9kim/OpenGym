@@ -180,12 +180,6 @@ a:focus {
     .intro .intro-body .intro-text {
         font-size: 26px;
     }
-
-    .hbutt {
-        height: 50%;
-        padding: 0;
-        width: 50%;
-    }
 }
 
 .btn-circle {

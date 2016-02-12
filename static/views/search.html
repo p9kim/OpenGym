@@ -5,39 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Search</title>
-
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="../css/login.css" rel="stylesheet">
-
-    <title>Search</title>
+    <script src="../js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+	    .result
+		{
+		  border: 2px solid;
+		  width: 500px;
+		  text-align: center;
+		  margin: 35px;
+		}
+		.result .gym
+		{
+		  font-weight: bold;
+		  font-size: 15pt;
+		}
+    </style>
+    <script>
+    	$(document).ready(function() {
+    		$(".form-control, .btn-default").keyup(function() {
+    			$.get(
+    				"search.php", {term: $(".form-control").val()}, function(data) {
+    					$("#search-results").html(data);
+    			});
+    		});
+    	});
+    </script>
 </head>
 <body>
 	<div class="page-header">
-  		<h1>Find A Gym!!!<small></small></h1>
+  		<h1>Find A Gym<small></small></h1>
 	</div>
 	<div class="row">
-	<div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Input Location">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Search</button>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
+		<div class="col-lg-6">
+    		<div class="input-group">
+		     	<input type="text" class="form-control" placeholder="Input Location">
+		      	<span class="input-group-btn">
+		       		<button class="btn btn-default" type="button">Search</button>
+		      	</span>
+    		</div><!-- /input-group -->
+  		</div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
+	<div id="search-results">
 
-    <script src="../js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="../js/jquery.easing.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../js/app.js"></script>
+	</div>
 </body>
 </html>

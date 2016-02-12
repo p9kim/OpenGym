@@ -1,0 +1,68 @@
+[
+	{
+		"gym": "24 Hour Fitness",
+		"address": "7680 Girard Ave La Jolla, CA 92037",
+		"pack": 0
+	},
+
+	{
+		"gym": "The Boxing Club Sport & Fitness",
+		"address": "8650 Genesse Ave, Ste 206, University City, CA 92122",
+		"pack": 0
+	},
+
+	{
+		"gym": "Iron Orr Fitness",
+		"address": "8720 Costa Verde Blvd, University City, CA 92122",
+		"pack": 0
+	},
+
+	{
+		"gym": "Visualize Fitness",
+		"address": "8720 Costa Verde Blvd, University City, CA 92122",
+		"pack": 0
+	},
+
+	{
+		"gym": "SparkleCycle",
+		"address": "7777 Fay Ave La Jolla, CA 92037",
+		"pack": 0
+	},
+
+	{
+		"gym": "UCSD Rimac",
+		"address": "9500 Gilman Dr La Jolla, CA 92093",
+		"pack": 0
+	},
+
+	{
+		"gym": "UCSD Main Gym",
+		"address": "9500 Gilman Dr La Jolla, CA 92093",
+		"pack": 0
+	},
+
+	{
+		"gym": "Revolution Fitness",
+		"address": "7580 Fay Ave La Jolla, CA 92037",
+		"pack": 0
+	},
+
+	{
+		"gym": "Orangetheory Fitness",
+		"address": "7734 Girard Ave La Jolla, CA 92037",
+		"pack": 0
+	},
+
+	{
+		"gym": "Infinite Fitness",
+		"address": "4330 Morena Blvd San Diego, CA 92117",
+		"pack": 0
+	},
+
+	{
+		"gym": "World Gym",
+		"address": "2949 Garnet Ave San Diego, CA 92109",
+		"pack": 0
+	}
+
+]

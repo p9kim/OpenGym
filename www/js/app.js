@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in item.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+var app = angular.module('starter', ['ionic'])
 
-.run(function($ionicPlatform) {
+app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -21,13 +21,12 @@ angular.module('starter', ['ionic'])
       StatusBar.styleDefault();
     }
   });
-})
+});
 
 
 //Config
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $ionicConfigProvider.tabs.position('bottom');
-  $ionicConfigProvider.navBar.alignTitle('center');
 
   $stateProvider
   .state('tabs', {
@@ -85,22 +84,27 @@ angular.module('starter', ['ionic'])
     }
   })
 
+
+
   $urlRouterProvider.otherwise('/tab/home');
-})
+});
+
 
 //Controllers
-.controller('GymController', ['$scope', '$http', '$state', 
+app.controller('GymController', ['$scope', '$http', '$state', 
   function($scope, $http, $state) {
   $http.get('js/data.json').success(function(data) {
     $scope.gyms = data;
-    //$scope.levels = data.pack;
+    $scope.levels = data.pack;
+    //var test = data.pack;
+    //console.log("please work:" + data.pack);
     //console.log("level is: " levels);
     $scope.whichgym = $state.params.level;
     $scope.gyminfo = $state.params.info;
 
-    /*scope.plusOne = function(item) {
-      item.pack += 1;
-    }
+    /*$scope.plusOne = function(item) {
+      item.pack += 5;
+    };
 
     $scope.minusOne = function(item) {
       if(item.pack <= 0) {
@@ -109,24 +113,64 @@ angular.module('starter', ['ionic'])
       else {
         item.pack -= 1;
       }
-    }*/
+    };*/
 
     $scope.doRefresh = function() {
       $http.get('js/data.json').success(function(data) {
         $scope.gyms = data;
+        $scope.whichgym = $state.params.level;
+        $scope.gyminfo = $state.params.info;
         $scope.$broadcast('scroll.refreshComplete');
       })
-    }
+    };
 
   });
-}])
+}]);
 
-/*.directive('help', ['$rootScope', function($rootScope) {
+
+app.directive('help', ['$rootScope', function($rootScope) {
   return {
     restrict: 'EA',
-    templateUrl: 'directives/help.html',
-    link: function(scope, element, attrs){
+    //templateUrl: 'directives/help.html',
+    //controller: 'GymController',
+    //scope: {},
+    //replace: true,
+    link: function (scope, element, attr) {
 
+      setTimeout(function(){
+        $('p#pack.ng-binding').html("Loading...");
+        $.get("php/updateLevel.php?gym="+$('h1.ng-binding').html().replace(/ /g,"_")+"&"+"return=true", function(data) {
+          $('p#pack.ng-binding').html(data);
+        });
+
+
+        $('button.change').click(function(){
+          $('p#pack.ng-binding').html("Loading...");
+          $.get("php/updateLevel.php?gym="+$('h1.ng-binding').html().replace(/ /g,"_")+"&"+"level="+$(this).html().trim(), function(data) {
+            $('p#pack.ng-binding').html(data);
+          });
+        });
+
+      }, 1000);
+
+
+
+      /*
+      console.log(scope.help);
+      $('p.ng-binding').html("Loading...");
+      $.get("php/updateLevel.php?gym="+$('h1.ng-binding').html().replace(/ /g,"_")+"&"+"return=true", function(data) {
+        $('p.ng-binding').html(data);
+      });
+
+
+      $('button').click(function(){
+      $('p.ng-binding').html("Loading...");
+      $.get("php/updateLevel.php?gym="+$('h1.ng-binding').html().replace(/ /g,"_")+"&"+"level="+$(this).html().trim(), function(data) {
+          $('p.ng-binding').html(data);
+        });
+      });
+      */
     }
   };
-}])*/;
+}]);
+
